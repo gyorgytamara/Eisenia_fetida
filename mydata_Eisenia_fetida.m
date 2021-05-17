@@ -55,6 +55,7 @@ data.Wwb = 15*1e-3;   units.Wwb = 'g';   label.Wwb = 'wet weight at birth';     
 data.Wwp = 600*1e-3;   units.Wwp = 'g';   label.Wwp = 'wet weight at puberty';   bibkey.Wwp = 'ReinVil1990';
 % data.Wwi = 1000*1e-3;   units.Wwi = 'g';   label.Wwi = 'ultimate wet weight';     bibkey.Wwi = 'CEH2016';
 data.Wwi = 2400*1e-3;   units.Wwi = 'g';   label.Wwi = 'ultimate wet weight';     bibkey.Wwi = 'Neuh1980';
+data.Ww0 = 14.3*1e-3;   units.Ww0 = 'g';   label.Ww0 = 'egg wet weight';     bibkey.Wwi = 'VentRein1988';
 
 data.Ri  = 2.7 * 2.3/7;   units.Ri  = '#/d'; label.Ri  = 'maximum reprod rate';     bibkey.Ri  = 'CEH2016';
 comment.Ri = '2.3 cocoons/worm/week and average of 2,7 offspring per cocoon are produced. 2.7 individuals per concoon is in line with Reinecke and Kriel 19981, Domínguez(2004)reports higher numbers of individuals per cocoon (2.5-3.8)';
@@ -253,6 +254,68 @@ units.tW13   = {'d', 'g'};  label.tW13 = {'time since birth', 'wet weight'};
 temp.tW13    = C2K(25);  units.temp.tW13 = 'K'; label.temp.tW13 = 'temperature';
 bibkey.tW13 = 'Neuh1980'; comment.tW13='food source: horse manure';
 
+% t-N data from VentRein1988, experiments conducted at 25°C 
+% (data obtained by image measurement using the GIMP software)
+data.tN = [ ... % time since birth (d), cumulative offspring (#)
+80	3.78
+90	23.76
+100	42.12
+110	53.19
+120	62.1
+130	72.9
+140	79.38
+150	90.72
+160	92.88
+170	92.88
+180	105.3
+190	105.3
+200	109.35
+210	128.25
+220	144.18
+230	162
+240	176.04
+250	192.51
+260	208.98
+270	227.34
+280	240.3
+290	252.18
+300	261.36
+310	273.24
+320	286.2
+330	299.16
+340	311.04
+350	311.04
+360	315.9
+370	323.73
+380	325.89
+390	335.07
+400	345.6
+410	353.43
+420	368.01
+430	380.7
+440	393.66
+450	404.73
+460	416.61
+470	427.68
+480	436.32
+490	436.32
+500	439.29
+510	444.42
+520	446.04
+530	450.36
+540	453.6
+550	455.49
+560	460.35
+570	461.7
+580	463.32
+590	465.21
+600	466.83];
+units.tN   = {'d', '#'};  label.tN = {'time since birth', 'cumulative offspring'};  
+temp.tN    = C2K(25);  units.temp.tN = 'K'; label.temp.tN = 'temperature';
+bibkey.tN = 'VentRein1988';
+comment.tN = '';
+
+
 %% set weights for all real data
 weights = setweights(data, []);
 
@@ -364,5 +427,15 @@ bibkey = 'ReinVent1987'; type = 'Article'; bib = [ ...
 'doi = {}, ' ...
 'volume = {3}, ' ...
 'pages = {135-141}'];
+metaData.biblist.(bibkey) = ['''@', type, '{', bibkey, ', ' bib, '}'';'];
+%
+bibkey = 'VentRein1988'; type = 'Article'; bib = [ ... 
+'author = {J.M. Venter and A.J. Reinecke}, ' ... 
+'year = {1988}, ' ...
+'title = {The life-cycle of the compost worm Eisenia fetida (Oligochaeta), ' ...
+'journal = {South African Journal of Zoology}, ' ...
+'doi = {10.1080/02541858.1988.11448096}, ' ...
+'volume = {23}, ' ...
+'pages = {161-165}'];
 metaData.biblist.(bibkey) = ['''@', type, '{', bibkey, ', ' bib, '}'';'];
  
