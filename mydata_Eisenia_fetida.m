@@ -55,7 +55,7 @@ data.Wwb = 15*1e-3;   units.Wwb = 'g';   label.Wwb = 'wet weight at birth';     
 data.Wwp = 600*1e-3;   units.Wwp = 'g';   label.Wwp = 'wet weight at puberty';   bibkey.Wwp = 'ReinVil1990';
 % data.Wwi = 1000*1e-3;   units.Wwi = 'g';   label.Wwi = 'ultimate wet weight';     bibkey.Wwi = 'CEH2016';
 data.Wwi = 2400*1e-3;   units.Wwi = 'g';   label.Wwi = 'ultimate wet weight';     bibkey.Wwi = 'Neuh1980';
-data.Ww0 = 14.3*1e-3;   units.Ww0 = 'g';   label.Ww0 = 'egg wet weight';     bibkey.Wwi = 'VentRein1988';
+data.Ww0 = 14.3*1e-3;   units.Ww0 = 'g';   label.Ww0 = 'egg wet weight';     bibkey.Ww0 = 'VentRein1988';
 
 data.Ri  = 2.7 * 2.3/7;   units.Ri  = '#/d'; label.Ri  = 'maximum reprod rate';     bibkey.Ri  = 'CEH2016';
 comment.Ri = '2.3 cocoons/worm/week and average of 2,7 offspring per cocoon are produced. 2.7 individuals per concoon is in line with Reinecke and Kriel 19981, Domínguez(2004)reports higher numbers of individuals per cocoon (2.5-3.8)';

@@ -25,6 +25,7 @@ function [prdData, info] = predict_Eisenia_fetida(par, data, auxData)
   TC_Ri = tempcorr(temp.Ri, T_ref, T_A);
   TC_tW1 = tempcorr(temp.tW1, T_ref, T_A);
   TC_W11= tempcorr(temp.tW11, T_ref, T_A);
+  TC_tN= tempcorr(temp.tN, T_ref, T_A);
 
   % zero-variate data
 
@@ -33,12 +34,14 @@ function [prdData, info] = predict_Eisenia_fetida(par, data, auxData)
   [t_p, t_b, l_p, l_b, info] = get_tp(pars_tp, f);
   
   % initial
-%   pars_UE0 = [V_Hb; g; k_J; k_M; v]; % compose parameter vector
-%   U_E0 = initial_scaled_reserve(f, pars_UE0); % d.cm^2, initial scaled reserve
+   pars_UE0 = [V_Hb; g; k_J; k_M; v]; % compose parameter vector
+   U_E0 = initial_scaled_reserve(f, pars_UE0); % d.cm^2, initial scaled reserve
+   Ww_0 = U_E0 * p_Am * w_E/ mu_E/ d_E; % g, egg wet weight
 
-%   % hatch   
+   %   % hatch   
 %   [U_H aUL] = ode45(@dget_aul, [0; U_Hh; U_Hb], [0 U_E0 1e-10], [], kap, v, k_J, g, L_m);
 %   a_h = aUL(2,1); aT_h = a_h/ TC_ah; % d, age at hatch at f and T
+
 
   % birth
   L_b = L_m * l_b;                  % cm, structural length at birth at f
@@ -81,6 +84,7 @@ function [prdData, info] = predict_Eisenia_fetida(par, data, auxData)
   prdData.Wwp = Ww_p;
   prdData.Wwi = Ww_i;
   prdData.Ri  = RT_i;
+  prdData.Ww0 = Ww_0;
   
   % uni-variate data : time-wet weight of 46 individual worms from 2
   % separate experiments
@@ -134,6 +138,14 @@ function [prdData, info] = predict_Eisenia_fetida(par, data, auxData)
   EWw13 = L.^3 * (1 + f * w);                                       % g, wet weight  
   % pack to output
   prdData.tW13 = EWw13;
+  
+  % time - cum offspring
+  pars_R = [kap; kap_R; g; TC_tN * k_J; TC_tN * k_M; L_T; TC_tN * v; U_Hb/ TC_tN; U_Hp/ TC_tN];
+  Ri = reprod_rate(L_i, f, pars_R); % #/d, ultimate reproduction rate at T
+  EN = tN(:,1) * Ri;
+  
+  % pack to output
+  prdData.tN = EN;
 
 
 %% subfunction for growth:
