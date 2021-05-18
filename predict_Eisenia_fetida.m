@@ -25,7 +25,7 @@ function [prdData, info] = predict_Eisenia_fetida(par, data, auxData)
   TC_Ri = tempcorr(temp.Ri, T_ref, T_A);
   TC_tW1 = tempcorr(temp.tW1, T_ref, T_A);
   TC_W11= tempcorr(temp.tW11, T_ref, T_A);
-  TC_tN= tempcorr(temp.tN, T_ref, T_A);
+  TC_tN = tempcorr(temp.tN, T_ref, T_A);
 
   % zero-variate data
 
