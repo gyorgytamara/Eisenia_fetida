@@ -25,7 +25,8 @@ par.s_G = 0.0001;     free.s_G   = 0;   units.s_G = '-';          label.s_G = 'G
 %% other parameters 
 par.T_A = 8000;       free.T_A   = 0;   units.T_A = 'K';          label.T_A = 'Arrhenius temperature'; 
 par.del_M = 0.050632;  free.del_M = 1;   units.del_M = '-';        label.del_M = 'shape coefficient'; 
-par.f = 1;            free.f     = 0;   units.f = '-';            label.f = 'scaled functional response for 0-var data'; 
+par.f = 1;            free.f     = 0;   units.f = '-';            label.f = 'scaled functional response for 0-var data';
+par.ftN3 = 0.95;         free.ftN3  = 0;   units.ftN3 = '-';         label.ftN3 = 'scaled functional response for Siddique2005 - dry leaves';
 par.ftW1 = 0.2125;    free.ftW1  = 0;   units.ftW1 = '-';         label.ftW1 = 'ind1exp1'; 
 par.ftW10 = 1;        free.ftW10 = 0;   units.ftW10 = '-';        label.ftW10 = 'Gunadi'; 
 par.ftW11 = 1;        free.ftW11 = 0;   units.ftW11 = '-';        label.ftW11 = 'Neuhauser sludge'; 

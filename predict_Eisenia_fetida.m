@@ -25,7 +25,8 @@ function [prdData, info] = predict_Eisenia_fetida(par, data, auxData)
   TC_Ri = tempcorr(temp.Ri, T_ref, T_A);
   TC_tW1 = tempcorr(temp.tW1, T_ref, T_A);
   TC_W11= tempcorr(temp.tW11, T_ref, T_A);
-  TC_tN = tempcorr(temp.tN, T_ref, T_A);
+  TC_tN1 = tempcorr(temp.tN1, T_ref, T_A);
+  TC_tN23 = tempcorr(temp.tN2, T_ref, T_A);
 
   % zero-variate data
 
@@ -140,12 +141,28 @@ function [prdData, info] = predict_Eisenia_fetida(par, data, auxData)
   prdData.tW13 = EWw13;
   
   % time - cum offspring
-  pars_R = [kap; kap_R; g; TC_tN * k_J; TC_tN * k_M; L_T; TC_tN * v; U_Hb/ TC_tN; U_Hp/ TC_tN];
+  pars_R = [kap; kap_R; g; TC_tN1 * k_J; TC_tN1 * k_M; L_T; TC_tN1 * v; U_Hb/ TC_tN1; U_Hp/ TC_tN1];
   Ri = reprod_rate(L_i, f, pars_R); % #/d, ultimate reproduction rate at T
-  EN = tN(:,1) * Ri;
+  EN = tN1(:,1) * Ri;
   
   % pack to output
-  prdData.tN = EN;
+  prdData.tN1 = EN;
+  
+  % time - cum offspring
+  pars_R = [kap; kap_R; g; TC_tN23 * k_J; TC_tN23 * k_M; L_T; TC_tN23 * v; U_Hb/ TC_tN23; U_Hp/ TC_tN23];
+  Ri = reprod_rate(L_i, f, pars_R); % #/d, ultimate reproduction rate at T
+  EN = tN2(:,1) * Ri;
+  
+  % pack to output
+  prdData.tN2 = EN;
+  
+  % time - cum offspring
+  pars_R = [kap; kap_R; g; TC_tN23 * k_J; TC_tN23 * k_M; L_T; TC_tN23 * v; U_Hb/ TC_tN23; U_Hp/ TC_tN23];
+  Ri = reprod_rate(L_i, ftN3, pars_R); % #/d, ultimate reproduction rate at T
+  EN = tN3(:,1) * Ri;
+  
+  % pack to output
+  prdData.tN3 = EN;
 
 
 %% subfunction for growth:

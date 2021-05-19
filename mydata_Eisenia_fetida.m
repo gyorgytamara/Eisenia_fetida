@@ -256,7 +256,7 @@ bibkey.tW13 = 'Neuh1980'; comment.tW13='food source: horse manure';
 
 % t-N data from VentRein1988, experiments conducted at 25°C 
 % (data obtained by image measurement using the GIMP software)
-data.tN = [ ... % time since birth (d), cumulative offspring (#)
+data.tN1 = [ ... % time since birth (d), cumulative offspring (#)
 80	5.32
 90	33.44
 100	59.28
@@ -310,12 +310,80 @@ data.tN = [ ... % time since birth (d), cumulative offspring (#)
 580	652.08
 590	654.74
 600	657.02];
-units.tN   = {'d', '#'};  label.tN = {'time since birth', 'cumulative offspring'};  
-temp.tN    = C2K(25);  units.temp.tN = 'K'; label.temp.tN = 'temperature';
-bibkey.tN = 'VentRein1988';
-comment.tN = '';
+units.tN1   = {'d', '#'};  label.tN1 = {'time since birth', 'cumulative offspring'};  
+temp.tN1    = C2K(25);  units.temp.tN1 = 'K'; label.temp.tN1 = 'temperature';
+bibkey.tN1 = 'VentRein1988';
+comment.tN1 = '';
 
+% t-N data from Siddique2005, earthworms fed with cow manure 
+% (data obtained by image measurement using the GIMP software)
+data.tN2 = [ ... % time since birth (d), cumulative offspring (#)
+7	0
+14	0
+21	0
+28	19
+35	31
+42	50
+49	50
+56	67
+63	83
+70	83
+77	91
+84	89
+91	98
+98	103
+105	103
+112	107
+119	113
+126	113
+133	138
+140	148
+147	164
+154	153
+161	156
+168	174
+175	175
+182	182
+189	212];
+units.tN2   = {'d', '#'};  label.tN2 = {'time since birth', 'cumulative offspring'};  
+temp.tN2    = C2K(20);  units.temp.tN2 = 'K'; label.temp.tN2 = 'temperature';
+bibkey.tN2 = 'Siddique2005';
+comment.tN2 = 'earthworms fed with cow manure';
 
+% t-N data from Siddique2005, earthworms fed with dry leaves 
+% (data obtained by image measurement using the GIMP software)
+data.tN3 = [ ... % time since birth (d), cumulative offspring (#)
+7	0
+14	0
+21	0
+28	13
+35	24
+42	37
+49	27
+56	32
+63	42
+70	43
+77	49
+84	48
+91	46
+98	44
+105	53
+112	54
+119	44
+126	62
+133	84
+140	83
+147	87
+154	107
+161	102
+168	115
+175	137
+182	143
+189	133];
+units.tN3   = {'d', '#'};  label.tN3 = {'time since birth', 'cumulative offspring'};  
+temp.tN3    = C2K(20);  units.temp.tN3 = 'K'; label.temp.tN3 = 'temperature';
+bibkey.tN3 = 'Siddique2005';
+comment.tN3 = 'earthworms fed with dry leaves';
 
 
 %% set weights for all real data
@@ -434,10 +502,21 @@ metaData.biblist.(bibkey) = ['''@', type, '{', bibkey, ', ' bib, '}'';'];
 bibkey = 'VentRein1988'; type = 'Article'; bib = [ ... 
 'author = {J.M. Venter and A.J. Reinecke}, ' ... 
 'year = {1988}, ' ...
-'title = {The life-cycle of the compost worm Eisenia fetida (Oligochaeta), ' ...
+'title = {The life-cycle of the compost worm \emph{Eisenia fetida} ({O}ligochaeta), ' ...
 'journal = {South African Journal of Zoology}, ' ...
 'doi = {10.1080/02541858.1988.11448096}, ' ...
 'volume = {23}, ' ...
 'pages = {161-165}'];
+metaData.biblist.(bibkey) = ['''@', type, '{', bibkey, ', ' bib, '}'';'];
+
+%
+bibkey = 'Siddique2005'; type = 'Article'; bib = [ ... 
+'author = {J. Siddique, A. Khan, I. Hussain and S. Akhter}, ' ... 
+'year = {2005}, ' ...
+'title = {Growth and Reproduction of Earthworm (\emph{Eisenia fetida}) in Different Organic Media, ' ...
+'journal = {Pakistan J. Zool.}, ' ...
+'doi = {}, ' ...
+'volume = {37}, ' ...
+'pages = {211-214}'];
 metaData.biblist.(bibkey) = ['''@', type, '{', bibkey, ', ' bib, '}'';'];
  
